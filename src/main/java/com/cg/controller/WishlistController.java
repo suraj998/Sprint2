@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.entity.Address;
 import com.cg.entity.AllProducts;
 import com.cg.entity.User;
+import com.cg.exception.ProductException;
 import com.cg.service.AddressServiceI;
 import com.cg.service.AllProductServiceI;
 import com.cg.service.UserServiceI;
@@ -42,9 +43,11 @@ public class WishlistController {
 	}
 	
 	@GetMapping(value="/product/{id}")
-	public AllProducts productById(@PathVariable String id)
+	public AllProducts productById(@PathVariable String id) 
 	{
-		return allproductservice.findById(id);
+	
+		    return allproductservice.findById(id);
+		
 	}
 	///////////////////////////////////////////////////////////////////////
 	
