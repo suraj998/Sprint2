@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.cg.entity.AllProducts;
 import com.cg.entity.User;
 @Repository
 @Transactional
@@ -19,9 +21,7 @@ public class UserDaoImpl implements UserDaoI{
 		// TODO Auto-generated method stub
 		System.out.println("INSIDE create user function");
 		em.persist(user);
-		System.out.println("persist successflly");
-		em.flush();
-		
+			
 	}
 	@Override
 	public void create(User user) {
@@ -31,12 +31,17 @@ public class UserDaoImpl implements UserDaoI{
 	@Override
 	public List reterive() {
 		// TODO Auto-generated method stub
-		return null;
+		String str="SELECT allusers FROM User allusers";
+		TypedQuery<User> query=em.createQuery(str,User.class);
+		return query.getResultList();
+		
 	}
 	@Override
-	public User findById(int i) {
+	public User findById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		User u= em.find(User.class, id);
+		System.out.println(u);
+		return u;
 	}
 
 }

@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="address_table")
 public class Address {
@@ -34,7 +36,7 @@ public class Address {
 	@Column(length=6)
 	private String zip;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user ;
@@ -118,6 +120,12 @@ public class Address {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", retailerId=" + retailerId + ", buildingNo=" + buildingNo
+				+ ", city=" + city + ", state=" + state + ", field=" + field + ", zip=" + zip ;
 	}
 	
 	

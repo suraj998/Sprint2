@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -42,20 +44,6 @@ public class User {
 	
 	@Column(length=20)
 	private String email;
-	
-	/*
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="addressId")
-	
-	private Address addresses;
-	
-	public Address getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(Address addresses) {
-		this.addresses = addresses;
-	}*/
 	
         @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
         private List<Address> address=new ArrayList<Address>();
@@ -80,7 +68,7 @@ public class User {
 	    }
     
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private List<Product> product= new ArrayList<Product>();
 	
@@ -93,11 +81,6 @@ public class User {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
-	/////////////////////////////////////////// 
-	
-	
-	
-	
 
 
 
@@ -157,12 +140,18 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
+	@JsonIgnore
 	public void addProduct(List<Product> p)
 	{ System.out.println("inside ADD PRODUCT");
 		this.setProduct(p);
 	
 		System.out.println(" product added successfully");
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password + ", role=" + role + ", phoneNumber=" + phoneNumber
+				+ ", email=" + email + ", address=" + address + "]";
 	}
 	
 	

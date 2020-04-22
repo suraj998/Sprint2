@@ -12,11 +12,11 @@ import com.cg.entity.Address;
 @Repository
 @Transactional
 public class AddressDaoImpl implements AddressDaoI{
-	
+	@PersistenceContext
+    EntityManager entitymanager;
 	@Override
 	public void createAddress(Address address) {
 		// TODO Auto-generated method stub
-		
 		System.out.println("ADDRESS INSERTED");
 	}
 

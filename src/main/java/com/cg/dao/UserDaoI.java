@@ -8,5 +8,5 @@ public interface UserDaoI {
 public void createUser(User user);
 public void create(User user);
 public List reterive();
-public User findById(int i);
+public User findById(String id);
 }
