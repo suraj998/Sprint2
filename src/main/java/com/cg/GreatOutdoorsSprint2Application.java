@@ -41,7 +41,7 @@ public class GreatOutdoorsSprint2Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Address a1=new Address("A111","R101","15","Jaipur","Rajasthan","Udai mod","144411");
+	/*	Address a1=new Address("A111","R101","15","Jaipur","Rajasthan","Udai mod","144411");
 		Address a2=new Address("A113","R101","15","Jaipur","Rajasthan","Udai mod","144411");
 		List<Address> aList=new ArrayList<>();
 		aList.add(a1);
@@ -59,7 +59,7 @@ public class GreatOutdoorsSprint2Application implements CommandLineRunner {
 		p2.setUser(user1);
 	    a1.setUser(user1);
 	    a2.setUser(user1);
-		userdaoImpl.createUser(user1);
+		userdaoImpl.createUser(user1); */
 		
 		//AllProducts product1=new AllProducts("P102",100,"Red","dim","spec","xyz",10,10,"Bat"); 
 		//allproductdao.create(product1);

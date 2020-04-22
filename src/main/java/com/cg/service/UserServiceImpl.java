@@ -3,10 +3,11 @@ package com.cg.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cg.dao.UserDaoI;
 import com.cg.entity.User;
-
+@Service
 public class UserServiceImpl implements UserServiceI {
 
 	@Autowired

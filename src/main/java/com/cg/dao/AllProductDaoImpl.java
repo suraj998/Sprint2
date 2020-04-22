@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+
 
 import com.cg.entity.AllProducts;
 import com.cg.entity.Product;
@@ -25,13 +27,16 @@ public class AllProductDaoImpl implements AllProductDaoI {
 	@Override
 	public List reterive() {
 		// TODO Auto-generated method stub
-		return null;
+		String str="SELECT allproducts FROM AllProducts allproducts";
+		TypedQuery<AllProducts> query=entitymanager.createQuery(str,AllProducts.class);
+		return query.getResultList();
+		
 	}
 
 	@Override
-	public AllProducts findById(int i) {
+	public AllProducts findById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return entitymanager.find(AllProducts.class, id);
 	}
 
 }
