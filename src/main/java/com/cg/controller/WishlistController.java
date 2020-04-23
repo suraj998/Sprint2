@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.entity.Address;
 import com.cg.entity.AllProducts;
+import com.cg.entity.Product;
 import com.cg.entity.User;
 import com.cg.exception.ProductException;
 import com.cg.service.AddressServiceI;
 import com.cg.service.AllProductServiceI;
+import com.cg.service.ProductServiceI;
 import com.cg.service.UserServiceI;
 
 @RestController
@@ -25,6 +27,8 @@ public class WishlistController {
 	AllProductServiceI allproductservice;
 	@Autowired
 	UserServiceI userservice;
+	@Autowired
+	ProductServiceI productservice;
 
 	
 	
@@ -43,11 +47,16 @@ public class WishlistController {
 	}
 	
 	@GetMapping(value="/product/{id}")
-	public AllProducts productById(@PathVariable String id) 
+	public AllProducts productById(@PathVariable String id) throws ProductException 
 	{
-	
-		    return allproductservice.findById(id);
-		
+	        AllProducts product=allproductservice.findById(id);
+	        if(product==null)
+	        {   
+	        	throw new ProductException("Id not found");	
+	        }
+	        else 
+	    	 return product;
+		   
 	}
 	///////////////////////////////////////////////////////////////////////
 	
@@ -86,6 +95,25 @@ public class WishlistController {
    }
  //////////////////////////////////////////////////////////////////////////////
    
+  //*********Wishlist Operation***************
    
+   @GetMapping(value="/user/{uid}/{pid}")
+   public void addToWislist(@PathVariable String uid,@PathVariable String pid) throws ProductException
+   {   System.out.println("UID= "+uid+" PID= "+pid);
+	    if(productservice.checkId(uid, pid))
+	    {
+	    	Product p=new Product(pid);
+	    	p.setUser(userservice.findById(uid));
+	    	productservice.create(p);
+	    }
+	    else
+	    {  
+	       throw new ProductException("Product is not available");
+	    }
+   }
+   
+   
+   
+   ///////////////////////////////////////////
 
 }

@@ -39,4 +39,19 @@ public class AllProductDaoImpl implements AllProductDaoI {
 		return entitymanager.find(AllProducts.class, id);
 	}
 
+	@Override
+	public boolean checkPid(String pid) {
+		// TODO Auto-generated method stub
+		System.out.println("IN ALL PRODUCT DAO    PID= "+pid);
+		if(entitymanager.find(AllProducts.class, pid)!=null)
+		{
+			System.out.println("true");
+			return true;
+		}
+		else
+		{
+		return false;
+		}
+	}
+
 }

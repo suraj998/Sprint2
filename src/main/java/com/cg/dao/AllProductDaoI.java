@@ -9,4 +9,5 @@ public interface AllProductDaoI {
 	public void create(AllProducts product);
 	public List reterive();
 	public AllProducts findById(String id);
+	public boolean checkPid(String pid);
 }

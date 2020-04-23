@@ -43,5 +43,19 @@ public class UserDaoImpl implements UserDaoI{
 		System.out.println(u);
 		return u;
 	}
+	@Override
+	public boolean checkUid(String uid) {
+		// TODO Auto-generated method stub
+		System.out.println("IN USERDAO        UID= "+uid);
+		if(em.find(User.class, uid)!=null)
+		{  System.out.println("true");
+			return true;
+		}
+		else
+		{
+		return false;
+		}
+	}
 
+   
 }

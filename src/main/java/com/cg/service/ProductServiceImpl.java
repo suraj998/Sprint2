@@ -16,6 +16,7 @@ public class ProductServiceImpl implements ProductServiceI {
 	@Override
 	public void create(Product product) {
 		// TODO Auto-generated method stub
+		
        productdao.create(product);
 	}
 
@@ -26,9 +27,21 @@ public class ProductServiceImpl implements ProductServiceI {
 	}
 
 	@Override
-	public Product findById(int i) {
+	public Product findById(String i) {
 		// TODO Auto-generated method stub
 		return productdao.findById(i);
 	}
 
+	@Override
+	public boolean checkId(String uid, String pid)
+	{
+		System.out.println("IN PRODUCT SERVICE        UID= "+uid+" PID= "+pid);
+		if(productdao.checkId(uid, pid))
+		{
+			return true;
+		}
+		else {
+		return false;
+		}
+    }
 }

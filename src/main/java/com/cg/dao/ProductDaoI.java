@@ -11,8 +11,8 @@ import com.cg.entity.Product;
 
 public interface ProductDaoI {
 
-	public void createProduct(Product p);
 	public void create(Product product);
 	public List reterive();
-	public Product findById(int i);
+	public Product findById(String i);
+	public boolean checkId(String uid, String pid);
 }

@@ -9,4 +9,5 @@ public void createUser(User user);
 public void create(User user);
 public List reterive();
 public User findById(String id);
+public boolean checkUid(String uid);
 }

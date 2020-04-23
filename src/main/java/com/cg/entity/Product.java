@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -14,10 +16,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Table(name="product_user_table")
 public class Product {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Range(min=1,max=Long.MAX_VALUE)
 	private int product_user_id;
 	
 	@Column(length=10)
@@ -46,10 +52,11 @@ public class Product {
 		this.productId = productId;
 	}
 	
-	public Product(int product_user_id, String productId) {
+	public Product(String productId) {
 		super();
-		this.product_user_id = product_user_id;
+		
 		this.productId = productId;
+		
 	}
 	public Product() {
 		super();
