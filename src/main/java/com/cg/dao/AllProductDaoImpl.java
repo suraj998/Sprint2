@@ -27,8 +27,8 @@ public class AllProductDaoImpl implements AllProductDaoI {
 	@Override
 	public List reterive() {
 		// TODO Auto-generated method stub
-		String str="SELECT allproducts FROM AllProducts allproducts";
-		TypedQuery<AllProducts> query=entitymanager.createQuery(str,AllProducts.class);
+		String getAllProductQuery="SELECT allproducts FROM AllProducts allproducts";
+		TypedQuery<AllProducts> query=entitymanager.createQuery(getAllProductQuery,AllProducts.class);
 		return query.getResultList();
 		
 	}

@@ -14,11 +14,6 @@ import com.cg.entity.Address;
 public class AddressDaoImpl implements AddressDaoI{
 	@PersistenceContext
     EntityManager entitymanager;
-	@Override
-	public void createAddress(Address address) {
-		// TODO Auto-generated method stub
-		System.out.println("ADDRESS INSERTED");
-	}
 
 	@Override
 	public void create(Address address) {
@@ -33,7 +28,7 @@ public class AddressDaoImpl implements AddressDaoI{
 	}
 
 	@Override
-	public Address findById(int i) {
+	public Address findById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

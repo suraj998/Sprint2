@@ -7,5 +7,5 @@ import com.cg.entity.Address;
 public interface AddressServiceI {
 	public void create(Address address);
 	public List reterive();
-	public Address findById(int i);
+	public Address findById(String id);
 }

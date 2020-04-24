@@ -15,12 +15,12 @@ import com.cg.entity.User;
 @Transactional
 public class UserDaoImpl implements UserDaoI{
 	@PersistenceContext
-    EntityManager em;
+    EntityManager entitymanager;
 	@Override
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		System.out.println("INSIDE create user function");
-		em.persist(user);
+		entitymanager.persist(user);
 			
 	}
 	@Override
@@ -31,23 +31,23 @@ public class UserDaoImpl implements UserDaoI{
 	@Override
 	public List reterive() {
 		// TODO Auto-generated method stub
-		String str="SELECT allusers FROM User allusers";
-		TypedQuery<User> query=em.createQuery(str,User.class);
+		String allUserQuery="SELECT allusers FROM User allusers";
+		TypedQuery<User> query=entitymanager.createQuery(allUserQuery,User.class);
 		return query.getResultList();
 		
 	}
 	@Override
 	public User findById(String id) {
 		// TODO Auto-generated method stub
-		User u= em.find(User.class, id);
-		System.out.println(u);
-		return u;
+		User user= entitymanager.find(User.class, id);
+		System.out.println(user);
+		return user;
 	}
 	@Override
 	public boolean checkUid(String uid) {
 		// TODO Auto-generated method stub
 		System.out.println("IN USERDAO        UID= "+uid);
-		if(em.find(User.class, uid)!=null)
+		if(entitymanager.find(User.class, uid)!=null)
 		{  System.out.println("true");
 			return true;
 		}

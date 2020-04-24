@@ -73,9 +73,9 @@ public class WishlistController {
 	@PostMapping(value="/addUser",consumes="application/json")
 	public String addUser(@RequestBody User user)
 	{
-		Address a1=new Address("A118","R101","15","Gwalior","MP","phoolbhG","144411");
+		Address address=new Address("A118","R101","15","Gwalior","MP","phoolbhG","144411");
 		List<Address> addressList=new ArrayList<Address>();
-		addressList.add(a1);
+		addressList.add(address);
 		user.addAddress(addressList);
 		userservice.create(user);
 		
@@ -103,9 +103,9 @@ public class WishlistController {
    {   System.out.println("UID= "+uid+" PID= "+pid);
 	    if(productservice.checkId(uid, pid))
 	    {
-	    	Product p=new Product(pid);
-	    	p.setUser(userservice.findById(uid));
-	    	productservice.create(p);
+	    	Product product=new Product(pid);
+	    	product.setUser(userservice.findById(uid));
+	    	productservice.create(product);
 	    }
 	    else
 	    {  

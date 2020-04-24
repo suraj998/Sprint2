@@ -17,7 +17,7 @@ import com.cg.entity.User;
 @Transactional
 public class ProductDaoImpl implements ProductDaoI{
       @PersistenceContext
-      EntityManager em;
+      EntityManager entitymanager;
       @Autowired
       UserDaoI userdao;
       @Autowired
@@ -26,7 +26,7 @@ public class ProductDaoImpl implements ProductDaoI{
 	@Override
 	public void create(Product product) {
 		// TODO Auto-generated method stub
-		em.persist(product);
+		entitymanager.persist(product);
 		
 	}
 
@@ -37,7 +37,7 @@ public class ProductDaoImpl implements ProductDaoI{
 	}
 
 	@Override
-	public Product findById(String i) {
+	public Product findById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -71,16 +71,12 @@ public class ProductDaoImpl implements ProductDaoI{
 	@Override
 	public void deleteProduct(String uid, String pid) {
 		// TODO Auto-generated method stub
-		String userStr="SELECT user FROM User user WHERE userId="+uid;
-		TypedQuery<User> userquery=em.createQuery(userStr,User.class);
-		User userResult= userquery.getSingleResult();
-		System.out.println(userResult);
-		String str="SELECT product FROM Product product WHERE  user="+uid+" AND productId="+"'"+pid+"'";
-		TypedQuery<Product> query=em.createQuery(str,Product.class);
+		String productQuery="SELECT product FROM Product product WHERE  user="+uid+" AND productId="+"'"+pid+"'";
+		TypedQuery<Product> query=entitymanager.createQuery(productQuery,Product.class);
 		Product product= query.getSingleResult();
 		System.out.println(product);
 //		System.out.println(product.getProductId()+"     "+product.getUser());
-    	em.remove(product);
+		entitymanager.remove(product);
 		
 	}
    

@@ -33,9 +33,9 @@ public class AllProductServiceImpl implements AllProductServiceI {
 	}
 
 	@Override
-	public AllProducts findById(String i) {
+	public AllProducts findById(String id) {
 		// TODO Auto-generated method stub
-		return allproductdao.findById(i);
+		return allproductdao.findById(id);
 	}
 	
 	

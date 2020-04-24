@@ -27,9 +27,9 @@ public class ProductServiceImpl implements ProductServiceI {
 	}
 
 	@Override
-	public Product findById(String i) {
+	public Product findById(String id) {
 		// TODO Auto-generated method stub
-		return productdao.findById(i);
+		return productdao.findById(id);
 	}
 
 	@Override

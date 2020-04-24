@@ -27,9 +27,9 @@ public class AddressServiceImpl implements AddressServiceI {
 	}
 
 	@Override
-	public Address findById(int i) {
+	public Address findById(String id) {
 		// TODO Auto-generated method stub
-		return addressdao.findById(i);
+		return addressdao.findById(id);
 	}
 
 }
