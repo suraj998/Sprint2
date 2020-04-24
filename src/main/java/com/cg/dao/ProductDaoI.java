@@ -15,4 +15,5 @@ public interface ProductDaoI {
 	public List reterive();
 	public Product findById(String i);
 	public boolean checkId(String uid, String pid);
+	public void deleteProduct(String uid, String pid);
 }

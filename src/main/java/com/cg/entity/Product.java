@@ -61,6 +61,10 @@ public class Product {
 	public Product() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "Product [product_user_id=" + product_user_id + ", productId=" + productId + ", user=" + user + "]";
+	}
 	
 
     

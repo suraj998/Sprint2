@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cg.entity.AllProducts;
 import com.cg.entity.Product;
+import com.cg.entity.User;
 @Repository
 @Transactional
 public class ProductDaoImpl implements ProductDaoI{
@@ -63,6 +66,22 @@ public class ProductDaoImpl implements ProductDaoI{
 			return false;
 		}
 
+	}
+
+	@Override
+	public void deleteProduct(String uid, String pid) {
+		// TODO Auto-generated method stub
+		String userStr="SELECT user FROM User user WHERE userId="+uid;
+		TypedQuery<User> userquery=em.createQuery(userStr,User.class);
+		User userResult= userquery.getSingleResult();
+		System.out.println(userResult);
+		String str="SELECT product FROM Product product WHERE  user="+uid+" AND productId="+"'"+pid+"'";
+		TypedQuery<Product> query=em.createQuery(str,Product.class);
+		Product product= query.getSingleResult();
+		System.out.println(product);
+//		System.out.println(product.getProductId()+"     "+product.getUser());
+    	em.remove(product);
+		
 	}
    
 }

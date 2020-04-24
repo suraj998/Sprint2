@@ -9,4 +9,5 @@ public interface ProductServiceI {
 	public List reterive();
 	public Product findById(String pid);
 	public boolean checkId(String uid, String pid);
+	public void deleteProduct(String uid, String pid);
 }

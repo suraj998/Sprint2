@@ -44,4 +44,10 @@ public class ProductServiceImpl implements ProductServiceI {
 		return false;
 		}
     }
+
+	@Override
+	public void deleteProduct(String uid, String pid) {
+		// TODO Auto-generated method stub
+		productdao.deleteProduct(uid, pid);
+	}
 }
