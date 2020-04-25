@@ -126,4 +126,12 @@ public class AllProducts {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "AllProducts [productId=" + productId + ", price=" + price + ", colour=" + colour + ", dimension="
+				+ dimension + ", specification=" + specification + ", manufacturer=" + manufacturer + ", quantity="
+				+ quantity + ", productCategory=" + productCategory + ", productName=" + productName + "]";
+	}
+
+	
 }

@@ -5,23 +5,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cg.entity.Address;
 import com.cg.entity.AllProducts;
 import com.cg.entity.Product;
 import com.cg.entity.User;
 import com.cg.exception.ProductException;
-import com.cg.service.AddressServiceI;
 import com.cg.service.AllProductServiceI;
 import com.cg.service.ProductServiceI;
 import com.cg.service.UserServiceI;
-
+@CrossOrigin(origins="*")
 @RestController
 public class WishlistController {
 	@Autowired
@@ -121,6 +120,13 @@ public class WishlistController {
    }
    
    
+   @GetMapping(value="/wishlistproduct/102")
+	public List fetchProduct()
+	{  System.out.println("inside controller");
+//		System.out.println(productservice.reterive(uid));
+	    String uid="102";
+	    return productservice.reterive(uid);
+	}
    
    
    

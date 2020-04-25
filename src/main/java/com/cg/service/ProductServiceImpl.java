@@ -21,9 +21,10 @@ public class ProductServiceImpl implements ProductServiceI {
 	}
 
 	@Override
-	public List reterive() {
+	public List reterive(String uid) {
 		// TODO Auto-generated method stub
-		return productdao.reterive();
+		System.out.println("inside product service");
+		return productdao.reterive(uid);
 	}
 
 	@Override
